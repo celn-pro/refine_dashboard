@@ -3,12 +3,13 @@ import { Text } from "@/components/text"
 import { COMPANIES_LIST_QUERY } from "@/graphql/queries"
 import { Company } from "@/graphql/schema.types"
 import { SearchOutlined } from "@ant-design/icons"
-import { CreateButton, FilterDropdown, List, useTable } from "@refinedev/antd"
+import { CreateButton, FilterDropdown, List, useTable, EditButton, DeleteButton } from "@refinedev/antd"
 import { getDefaultFilter, useGo, HttpError } from "@refinedev/core"
 import { Space, Table } from "antd"
 import Input from "antd/lib/input"
 import { GetFieldsFromList } from '@refinedev/nestjs-query'
 import { CompaniesListQuery } from '@/graphql/types'
+import { currencyNumber } from "@/utilities"
 
 
 export const CompanyList = ({children}: React.PropsWithChildren) => {
@@ -81,7 +82,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
                 }}
             >
                 <Table.Column<Company> 
-                    dataIndex="name"
+                    // dataIndex="name"
                     title="Company title"
                     defaultFilteredValue={getDefaultFilter('id', filters)}
                     filterIcon={<SearchOutlined />}
@@ -100,7 +101,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
                     )}
                 />
                 <Table.Column<Company>
-                    dataIndex="totalRevenue"
+                    // dataIndex="totalRevenue"
                     title="Open deals amount"
                     render={(value, company) => (
                         <Text>
@@ -109,7 +110,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
                     )}
                 />
                 <Table.Column<Company>
-                    dataIndex="id"
+                    // dataIndex="id"
                     title="Actions"
                     fixed="right"
                     render={(value) => (
