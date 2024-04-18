@@ -3,17 +3,20 @@ import { Text } from "@/components/text"
 import { COMPANIES_LIST_QUERY } from "@/graphql/queries"
 import { Company } from "@/graphql/schema.types"
 import { SearchOutlined } from "@ant-design/icons"
-import { CreateButton, FilterDropdown, List } from "@refinedev/antd"
-import { getDefaultFilter, useGo, useTable } from "@refinedev/core"
+import { CreateButton, FilterDropdown, List, useTable } from "@refinedev/antd"
+import { getDefaultFilter, useGo, HttpError } from "@refinedev/core"
 import { Space, Table } from "antd"
 import Input from "antd/lib/input"
+import { GetFieldsFromList } from '@refinedev/nestjs-query'
+import { CompaniesListQuery } from '@/graphql/types'
+
 
 export const CompanyList = ({children}: React.PropsWithChildren) => {
     const go = useGo()
     const {tableProps, filters} = useTable<
         GetFieldsFromList<CompaniesListQuery>,
         HttpError,
-        GetFieldsFromList<CompaniesListQuery>,
+        GetFieldsFromList<CompaniesListQuery>
 
     >({
         resource: 'companies',
@@ -41,7 +44,7 @@ export const CompanyList = ({children}: React.PropsWithChildren) => {
             initial: [
                 {
                     field: 'name',
-                    operatorf: 'contains',
+                    operator: 'contains',
                     value: undefined
                 }
             ]
